@@ -24,7 +24,7 @@ function SvingHF () {
 }
 let Modul_1B = 0
 let Modul_1F = 0
-basic.showIcon(IconNames.Surprised)
+basic.showIcon(IconNames.SmallHeart)
 Modul_1F = 540
 Modul_1B += -540
 basic.pause(2000)
@@ -34,8 +34,12 @@ basic.forever(function () {
         SvingHF()
         Fram()
         Bak()
-        SvingVB()
+        SvingHB()
         Bak()
     }
+    Fram()
     RoterH()
+    while (true) {
+        basic.showIcon(IconNames.Heart)
+    }
 })
