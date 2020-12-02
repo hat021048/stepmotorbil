@@ -1,0 +1,23 @@
+{
+    "name": "Stepmoorbil",
+    "description": "",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "microphone": "*",
+        "SuperBit": "github:lzty634158/superbit#0a0d6cd2c18804f6b56e944d0c7ff7bd91473ec8",
+        "Croco-Kit": "github:lzty634158/croco-kit#2a181955412e937a647f0f121c4744bbb7fc23b0"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "blocksprj"
+}
