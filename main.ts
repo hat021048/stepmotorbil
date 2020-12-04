@@ -8,38 +8,77 @@ function Stopp () {
     SuperBit.StepperDual(0, 0)
 }
 function Bak () {
+    basic.clearScreen()
+    basic.showLeds(`
+        . . # . .
+        . . # . .
+        # . # . #
+        . # # # .
+        . . # . .
+        `)
     SuperBit.StepperDual(Modul_1B, Modul_1B)
 }
 function RoterH () {
+    basic.clearScreen()
+    basic.showLeds(`
+        . . # . .
+        . # . # .
+        # . # . #
+        . # . # .
+        . . # . .
+        `)
     SuperBit.StepperDual(Modul_1F, Modul_1B)
 }
 function SvingVF () {
+    basic.clearScreen()
+    basic.showLeds(`
+        . . # . .
+        . . . # .
+        # # # # #
+        . . . # .
+        . . # . .
+        `)
     SuperBit.StepperDual(0, Modul_1F)
 }
 function Fram () {
+    basic.clearScreen()
+    basic.showLeds(`
+        . . # . .
+        . # # # .
+        # . # . #
+        . . # . .
+        . . # . .
+        `)
     SuperBit.StepperDual(Modul_1F, Modul_1F)
 }
 function SvingHF () {
+    basic.clearScreen()
+    basic.showLeds(`
+        . . # . .
+        . # . . .
+        # # # # #
+        . # . . .
+        . . # . .
+        `)
     SuperBit.StepperDual(Modul_1F, 0)
 }
 let Modul_1B = 0
 let Modul_1F = 0
-basic.showIcon(IconNames.SmallHeart)
-Modul_1F = 540
-Modul_1B += -540
+Modul_1F = -45
+Modul_1B += 45
+basic.showLeds(`
+    . # . # .
+    # . # . #
+    # . . . #
+    . # . # .
+    . . # . .
+    `)
 basic.pause(2000)
 basic.forever(function () {
-    for (let index = 0; index < 4; index++) {
+    if (CrocoKit_Sensor.IR(DigitalPin.P0, CrocoKit_Sensor.enObstacle.NoObstacle)) {
         Fram()
-        SvingHF()
-        Fram()
+    } else {
+        Stopp()
         Bak()
-        SvingHB()
-        Bak()
-    }
-    Fram()
-    RoterH()
-    while (true) {
-        basic.showIcon(IconNames.Heart)
     }
 })
