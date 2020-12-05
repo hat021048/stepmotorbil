@@ -75,10 +75,23 @@ basic.showLeds(`
     `)
 basic.pause(2000)
 basic.forever(function () {
-    if (CrocoKit_Sensor.IR(DigitalPin.P0, CrocoKit_Sensor.enObstacle.NoObstacle)) {
+    if (CrocoKit_Sensor.IR(DigitalPin.P0, CrocoKit_Sensor.enObstacle.NoObstacle) && CrocoKit_Sensor.IR(DigitalPin.P1, CrocoKit_Sensor.enObstacle.NoObstacle)) {
         Fram()
-    } else {
+    } else if (CrocoKit_Sensor.IR(DigitalPin.P0, CrocoKit_Sensor.enObstacle.Obstacle)) {
         Stopp()
-        Bak()
+        for (let index = 0; index < 2; index++) {
+            Bak()
+            SvingHB()
+            SvingHB()
+            SvingHB()
+        }
+    } else if (CrocoKit_Sensor.IR(DigitalPin.P1, CrocoKit_Sensor.enObstacle.Obstacle)) {
+        Stopp()
+        for (let index = 0; index < 2; index++) {
+            Bak()
+            SvingVB()
+            SvingVB()
+            SvingVB()
+        }
     }
 })
